@@ -19,51 +19,43 @@
 %\renewcommand\UrlFont{\color{blue}\rmfamily}
 %\urlstyle{rm}
 %
-\begin{document}
-%
-\title{Contribution Title}
-%
-%\titlerunning{Abbreviated paper title}
-% If the paper title is too long for the running head, you can set
-% an abbreviated paper title here
-%
-\author{First Author\inst{1}\orcidID{0000-1111-2222-3333} \and
-Second Author\inst{2,3}\orcidID{1111-2222-3333-4444} \and
-Third Author\inst{3}\orcidID{2222--3333-4444-5555}}
-%
-\authorrunning{F. Author et al.}
-% First names are abbreviated in the running head.
-% If there are more than two authors, 'et al.' is used.
-%
-\institute{Princeton University, Princeton NJ 08544, USA \and
-Springer Heidelberg, Tiergartenstr. 17, 69121 Heidelberg, Germany
-\email{lncs@springer.com}\\
-\url{http://www.springer.com/gp/computer-science/lncs} \and
-ABC Institute, Rupert-Karls-University Heidelberg, Heidelberg, Germany\\
-\email{\{abc,lncs\}@uni-heidelberg.de}}
-%
-\maketitle              % typeset the header of the contribution
-%
-\begin{abstract}
-The abstract should briefly summarize the contents of the paper in
-150--250 words.
 
-\keywords{First keyword  \and Second keyword \and Another keyword.}
+\newcommand{\framework}{WhiteLie}
+
+\begin{document}
+
+\title{\framework{}: A Robust System for Spoofing User Data in Android Platforms}
+%\titlerunning{A Robust System for Spoofing User Data in Android Platforms}
+
+\author{Anonymous Authors}
+% \author{First Author\inst{1}\orcidID{0000-1111-2222-3333} \and
+% Second Author\inst{2,3}\orcidID{1111-2222-3333-4444} \and
+% Third Author\inst{3}\orcidID{2222--3333-4444-5555}}
+% \authorrunning{F. Author et al.}
+% % First names are abbreviated in the running head.
+% % If there are more than two authors, 'et al.' is used.
+% \institute{University1, Location1 \and
+% University1, Location2 \\
+% \email{email2}\\
+% \url{URL2} \and
+% University3, Location3\\
+% \email{email3}}
+
+\maketitle              % typeset the header of the contribution
+
+\begin{abstract}
+Android employs a permission framework that empowers users to either accept or deny sharing their private data (e.g., location) with an app. However, many apps tend to crash when they are denied permission, leaving users no choice but to allow access to their data in order to use the app. 
+% However, existing approaches either require rooting the device or require recompiling the app. 
+In this paper, we introduce a comprehensive and robust user data spoofing system, \framework{}, that can spoof a variety of user data and feed it to target apps. Unlike prior approaches, \framework{} requires neither device rooting nor altering the app's binary. Through experiments on more than 50 popular Android apps, we demonstrate that \framework{} is able to deceive apps into accepting spoofed data without getting detected. \framework{} does not significantly impact battery consumption, CPU utilization, or the app's execution time. We also show several case studies where \framework{} is useful in protecting user privacy. Our findings underscore the feasibility of implementing user-centric privacy-enhancing mechanisms within the existing Android ecosystem.
+
+\keywords{Android \and User Data Privacy \and Continuous Authentication \and Side-Channel Attacks.}
 \end{abstract}
-%
-%
-%
+
 \section{First Section}
 \subsection{A Subsection Sample}
-Please note that the first paragraph of a section or subsection is
-not indented. The first paragraph that follows a table, figure,
-equation etc. does not need an indent, either.
+This is a new Para.
 
-Subsequent paragraphs, however, are indented.
-
-\subsubsection{Sample Heading (Third Level)} Only two levels of
-headings should be numbered. Lower level headings remain unnumbered;
-they are formatted as run-in headings.
+\subsubsection{Sample Heading (Third Level)} This is the second para.
 
 \paragraph{Sample Heading (Fourth Level)}
 The contribution should contain no more than four levels of
