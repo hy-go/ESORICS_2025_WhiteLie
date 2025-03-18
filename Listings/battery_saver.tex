@@ -1,0 +1,8 @@
+\begin{lstlisting}[caption={Kotlin code to save battery by returning \texttt{null} based on \texttt{batterySaver} policy defined by user},label={lst:btrySvr},language=Kotlin]
+override fun beforeHookedMethod(_:MethodHookParam){
+    val cursor = getDeceitSettings() 
+    val bs = getString(cursor, "batterySaver")
+    if(bs == "true") return null
+    cursor.close()
+}
+\end{lstlisting}

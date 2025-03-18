@@ -21,6 +21,16 @@
 
 \usepackage{hyperref}
 \usepackage{array}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{listings}
+% \input{listing_style}
+
+\usepackage{tikz}
+\newcommand*\circled[1]{
+    \tikz[baseline=(char.base)]
+    {\node[shape=circle,draw,inner sep=1pt] (char) {#1};}
+}
 
 \newcommand{\framework}{WhiteLie}
 

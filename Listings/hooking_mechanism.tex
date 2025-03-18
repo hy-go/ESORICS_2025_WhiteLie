@@ -1,0 +1,20 @@
+\begin{lstlisting}[caption={Kotlin code to hook target method ``\textit{methodName}" of class ``\textit{ClassName}" using Xposed Framework},label={lst:hooking},language=Kotlin]
+XposedHelpers.findAndHookMethod(
+  "ClassName", 
+  lpparam.classLoader, 
+  "methodName", 
+  XC_MethodHook() {
+    @Throws(Throwable::class)
+    override protected void beforeHookedMethod(
+      MethodHookParam param) {
+        super.beforeHookedMethod(param)
+    }
+
+    @Throws(Throwable::class)
+    override protected void afterHookedMethod(
+      MethodHookParam param) {
+        super.afterHookedMethod(param)
+    }
+  }
+)
+\end{lstlisting}
