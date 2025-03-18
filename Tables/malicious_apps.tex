@@ -1,0 +1,124 @@
+\begin{table}
+    {\centering
+    % \begin{tabular}{>{\arraybackslash} m{4.1cm}  >{\centering\arraybackslash} m{2cm} >{\centering\arraybackslash} m{5.15cm} >{\centering\arraybackslash} m{5.15cm}}
+    \begin{tabular}{p{\linewidth}} 
+         \toprule
+         \textbf{Malicious behavior:} Upload sensitive data to internet\\
+         \textbf{Apps (downloads):}
+         All Good PDF Scanner (10M+), Fast PDF Scanner (5M+), PhoneFinder by
+         Clapping (5M+), What's Me Sticker (1M+)\\
+         \textbf{\framework:} Limit internet access to the app\\
+         \midrule
+         \midrule
+         \textbf{Malicious behavior:} Access sensitive user data like Contacts, Location, Audio,
+         and Sensors unnecessarily\\
+         \textbf{Apps (downloads):} Amazing Video Editor (5M+), CapCut Pro (5M+), Instant Speech Translation (5M+), Keyboard Themes (5M+),
+         Launcher iOS 15 (5M+) \\
+         \textbf{\framework:} Deceived all the unnecessary user data requested without crashing the apps\\
+         \midrule
+         \midrule
+         \textbf{Malicious behavior:} Accessing data without user knowledge\\
+         \textit{Accessing sensor data in the background}\\
+         \textbf{Apps (downloads):} Bus Driver Simulator (5M+), Bus - Metrolis 2021 (1M+),
+         Fingerprint Changer (1M+), Fingerprint Defender (1M+), Lifeel - scan and test (5M+),
+         Locker Tool (5M+), OFFRoaders - Survive (5M+), Racers Car Driver (5M+), Safe Lock (5M+),
+         Slime Simulator (5M+), Smart Spot Locator (1M+), Unique Keyboard (5M+) \\
+         \textbf{\framework:} Allowed the apps to access the sensor
+         data in the foreground but not in the background\\
+         \midrule
+         
+         \textit{Camera access without user consent and knowledge}\\
+         \textbf{Apps (downloads):} Free Translator Photo (5M+), Handy Translator Pro (10M+),
+         Heart Rate and Pulse Tracker (5M+), Heart Rhythm (1M+),
+         My Chat Translator (5M+) \\
+         \textbf{\framework:} Deceived camera data fed into the app\\
+         \midrule
+         
+         \textit{Location continuously tracked by app}\\
+         \textbf{Apps (downloads):} Geospot: GPS Tracker (5M+), iCare - Find Location (5M+) \\
+         \textbf{\framework:} Deceived location data according to user policy\\
+         \midrule
+        \midrule
+        \textbf{Malicious behavior:} Detected accessing Send SMS API without user knowledge\\
+        \textbf{Apps (downloads):} Private SMS (5M+), Mint Left Messages (1M+) \\
+        \textbf{\framework:} Blocked access to send SMS but not from reading SMS as per user policy\\
+        \bottomrule
+    \end{tabular}
+    }
+    \caption{Malicious behavior of Android apps banned by Google and the actions taken by \framework 
+    to protect user privacy.}
+    \label{tab:malicious_apps}
+\end{table}
+
+% \begin{table*}
+%     {\centering
+%     \begin{tabular}{>{\centering\arraybackslash} m{4.1cm}  >{\centering\arraybackslash} m{2cm} >{\centering\arraybackslash} m{5.15cm} >{\centering\arraybackslash} m{5.15cm}}
+%         \hline
+%          \textbf{Malicious App} & \textbf{\#Downloads (in millions)} & \textbf{Malicious activities detected by \framework{}} & \textbf{Actions performed by \framework{}} \\
+%          \hline
+         
+%          All Good PDF Scanner & 10+ & Cam, Net & SUP(Cam), SB\\
+%          Fast PDF Scanner & 5+ & Cam, Net & SUP(Cam), SB \\
+%          PhoneFinder by Clapping & 5+ & Net, Aud & SUP(Aud), UDP(Net), SB \\
+%          What's Me Sticker & 1+ & Cam, Net & SUP(Cam), UDP(Net), SB \\
+%          \hline         
+         
+%          Amazing Video Editor & 5+ & Acc, Aud, Cam, Con, Loc, Net & SUP(Aud, Cam), UDP(Acc, Con, Loc), SB\\
+%          CapCut Pro & 5+ & Aud, Cam, Con, Loc, Net & SUP(Aud, Cam), UDP(Con, Loc), SB\\
+%          \hline
+         
+%          Bus Driver Simulator & 5+ & Net & UDP(Net), SB \\
+%          Bus - Metrolis 2021 & 1+ & Net & UDP(Net), SB \\
+%          Fingerprint Changer & 1+ & Net & SB \\
+%          Fingerprint Defender & 1+ & Net & SB \\
+%          Lifeel - scan and test & 5+ & Net & SB \\
+%          Locker Tool & 5+ & Net & UDP(Net), SB \\
+%          OFFRoaders - Survive & 5+ & Net & UDP(Net), SB \\
+%          Racers Car Driver & 5+ & Net & UDP(Net), SB \\
+%          Safe Lock & 5+ & Net & UDP(Net), SB \\
+%          Slime Simulator & 5+ & Net & UDP(Net), SB \\
+%          Smart Spot Locator & 1+ & Net & SB\\
+%          Unique Keyboard & 5+ & Net & UDP(Net), SB \\
+%          \hline
+
+%          Private SMS & 5+ & Acc, Cam, CLg, Con, Msg, Net & SUP(Acc, Cam, CLg, Con, Msg), SB\\
+%          Mint Left Messages & 1+ & Aud, Cam, CLg, Con, Msg, Net & SUP(Aud, CLg, Cam, Con, Msg), SB\\
+%          \hline
+         
+%          Free Translator Photo & 5+ & Cam & SUP(Cam), SB \\
+%          Handy Translator Pro & 10+ & Acc, Cam & UDP(Acc), SUP(Cam), SB \\
+%          My Chat Translator & 5+ & Acc, Cam & UDP(Acc), UDU(Cam), SB \\
+%          \hline
+         
+%          Geospot: GPS Tracker & 5+ &  Loc, Net  & SUP(Loc), SB \\
+%          iCare - Find Location & 5+ &  Cam, Loc, Net  & SUP(Loc), UDP(Cam), SB\\
+%          \hline
+         
+%          Heart Rate and Pulse Tracker & 5+ & Cam & UDP(Cam), SB \\         
+%          Heart Rhythm & 1+ & Cam & UDP(Cam), SB \\
+%          \hline
+         
+%          Instant Speech Translation & 5+ & Acc, Aud, Cam & UDP(Acc, Cam), SUP(Aud), SB \\
+%          \hline
+         
+%          Keyboard Themes & 5+ & Acc, Con & UDP(Acc, Con), SB \\
+%          Launcher iOS 15 & 5+ & Acc, Aud, Cam, Con, Loc, Net & UDU(Acc, Aud, Cam, Con, Loc, Net), SB \\
+%          \hline
+         
+         
+         
+         
+         
+         
+
+%          \hline
+%          \multicolumn{4}{l}{\footnotesize \textbf{Acc}: Account, \textbf{Aud}: Audio, \textbf{Cam}: Camera, \textbf{CLg}: Call Logs, \textbf{Con}: Contacts, \textbf{Loc}: Location, \textbf{Msg}: SMS, \textbf{Net}: Network } \\
+         
+%          \hline
+%          \multicolumn{4}{p{16.4cm}}{\footnotesize \textbf{SB}: Sandboxing apps and isolating from external world and other apps installed on the device to protect user privacy and mitigate attacks, \textbf{SUP}: Selective user data protection to ensure app functionality without compromising user data, \textbf{UDP}: Deceiving unnecessary dangerous permissions requested to ensure user privacy without crashing app, \textbf{UDU}: Detecting and blocking unexpected user data usage } \\
+%          \hline
+%     \end{tabular}
+%     }
+%     \caption{Malicious Android Apps banned by Google.}
+%     \label{tab:malicious_apps}
+% \end{table*}

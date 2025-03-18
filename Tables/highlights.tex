@@ -1,0 +1,29 @@
+\begin{table}
+    {\centering
+    \begin{tabular} {>{\arraybackslash\centering}m{2.5cm} >{\arraybackslash}m{9.5cm}}
+        \hline
+         \textbf{Use Case} & \textbf{Example(s)}\\
+         \hline
+         Bypassing Continuous Authentication & 
+         \textbf{MGRA}~\cite{hong2016mgra} (Sec \ref{sec:continuous_authentication_mechanisms}) utilizes the accelerometer data and \textbf{VoiceLive}~\cite{zhang2016voicelive} (Sec \ref{sec:continuous_authentication_mechanisms}) utilizes the smartphone's two different microphones to authenticate users. But \framework{} proves to be capable of bypassing these authentication mechanisms by spoofing the input data. \\
+         \hline
+         Granting Selective User Data & 
+         \textbf{Snapchat}(\hyperref[sec:sc_case_study]{Sec 5.3}) and \textbf{Truecaller}(\hyperref[sec:tc_case_study]{Sec 5.4}) requires users private data like Contacts and Messages to enable users to utilize functionalities provided by them, but this also compromises the private information. However, \framework{} enables users to grant partial data to apps that is essential.\\
+         \hline
+         Protection from Malicious Apps & 
+         \textbf{All Good PDF Scanner} (Sec \ref{sec:malicious_apps}) was granted permissions like Storage and Camera but was detected to be uploading data on the internet in the background, hence its internet access was blocked by \framework{}. \textbf{Unique Keyboard} (Sec \ref{sec:malicious_apps}) was found to be accessing the sensor data while running in the background, therefore \framework{} fed deceived data when app is running in the background.\\
+         \hline
+         Side-Channel Attack Mitigation & 
+         \textbf{Gyrosec}~\cite{lin2019motion} (Sec \ref{sec:side_channel_attack}) records the sensor data while running in the background, and uploads it over the internet. This was mitigated by deceiving the sensor data received by the apps.  \\
+         \hline
+         Unexpected Sensor Usage Detection & 
+         \textbf{Facebook} (Sec \ref{sec:fb_case_study}) requested for Audio permission. But it was found (using \framework{}) to be recording the microphone data when no activity requiring microphone was being used by the user.\\
+         \hline
+         User Privacy Protection & 
+         \textbf{Snapchat} (Sec \ref{sec:sc_case_study}) and \textbf{Truecaller} (Sec \ref{sec:tc_case_study}) provide great features to users but at the cost of sharing private information like Location, Contacts and Messages. \framework{} enables users to enjoy the provided features without compromising private information.\\
+         \hline
+    \end{tabular}
+    }
+    \caption{Various use cases of \framework{} and their respective real-world example(s)}
+    \label{tab:highlights}
+\end{table}

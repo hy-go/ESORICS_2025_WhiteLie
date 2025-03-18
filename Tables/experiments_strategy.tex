@@ -1,0 +1,39 @@
+\begin{table}[htbp]
+    \caption{Benchmarking and Deceiving Strategy used for each permission while evaluating performance overhead }
+    {\tiny
+    \begin{center}
+        % \begin{threeparttable}
+            \begin{tabular}{|>{\centering}m{0.15\linewidth}|m{0.4\linewidth}|m{0.26\linewidth}|}
+                \hline
+                \textbf{Permission} & \textbf{\textit{Bench-marking Strategy}} & \textbf{\textit{Deceived by}} \\
+                \hline
+                Calendar & Calls \texttt{ContentProvider. query()} for calendar events and traverse. & a database cursor with 30 fake calendar events rows.\\
+                \hline
+                Call Log & Calls \texttt{ContentProvider. query()} API for call logs and traverse. & a cursor to the database with 30 fake call logs. \\
+                \hline
+                Camera & Display the camera stream preview frame using \texttt{camera2} API. & the preview frame with a black image of same resolution. \\
+                \hline
+                Clipboard & Sets text of a \texttt{textView} with \texttt{ClipboardManager.prim- aryClip} text & a random string generated of arbitrary size.  \\
+                \hline
+                Contacts & Calls \texttt{ContentProvider. query()} API for contacts and traverse. & a cursor to the database with 30 fake contacts. \\
+                \hline
+                Location & Calls \texttt{LocationManager. getLastKnownLocation()} and logs the lats and longs & randomly generated float values  for lats and longs\\
+                \hline
+                Messages & Calls \texttt{ContentProvider. query()} API for messages and traverse. & a cursor to the database with 30 fake messages. \\
+                \hline
+                Network & \texttt{WifiManager.getConnec- tionInfo()} is called to log information like SSID. & randomly generated strings of arbitrary size. \\
+                \hline
+                Packages &  Calls \texttt{PackageManager. getInstalledPackages()} API and traverses over the list. & a list of 25 deceived packages \texttt{PackageInfo}. \\
+                \hline
+                Tracking & Logs various information fetched using \texttt{Telephony- Manager.getString()}. & randomly generated strings satisfying the patterns.  \\
+                \hline
+            \end{tabular}
+            % \begin{tablenotes}
+            %     \item[1] To maintain the consistency before and after deceiving the permission, the number of rows in the cursor returned by the \texttt{query()} method was maintained to be 30.
+            %     \item[2] To maintain the consistency before and after deceiving the permission, after deceiving the permission, \framework{} was modified to return the first 25 packages as deceived and the rest as returned by the non-hooked method call.
+            % \end{tablenotes}
+        %  \end{threeparttable}
+    \end{center}
+    }
+    \label{tab:benchmarking_strategy}
+\end{table}
