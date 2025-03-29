@@ -1,3 +1,4 @@
+\newpage
 \section{\framework{} Methodology}
 \label{sec:methodology}
 
@@ -58,12 +59,10 @@ Similarly, in the after hook, i.e. Lines 20-26, the clipboard data is deceived a
 \subsection{\framework{} and its Robustness}
 In this section, we present \framework{}'s mechanism to achieve the functionality of spoofing the user data fed into other apps and discuss its performance against real-world apps highlighting its robust nature.
 
-\subsubsection{Robust Mechanism} 
-
+\mysubsubsection{Robust Mechanism} 
 By utilising dynamic hooking, \framework{} effectively manipulates user data in other apps by modifying the source code stored in volatile memory, thus avoiding permanent alterations on disk. As a result, the injected hooks cannot be detected using APK signatures or Google's Play Integrity API, making \framework{} resilient against these security measures. Moreover, \framework{} follows a methodology of spoofing user data instead of outright revoking permissions based on context. This approach ensures that \framework{} remains crash-proof, providing a reliable and robust solution.
 
-\subsubsection{Spoofing Real-world Apps}
-
+\mysubsubsection{Spoofing Real-world Apps}
 The capability of \framework{} against real-world apps in protecting user privacy by spoofing was explored using 50 real-world apps downloaded from the Google Play Store, and 20 pre-installed Android apps. All permissions requested by the apps were granted beforehand, and the apps were subjected to 20 minutes of manual usage. All experiments were conducted on a \textit{Samsung Galaxy M21} smartphone with a 2.3 GHz octa-core processor and 4 GB of RAM running Android 12. The outcomes were documented for each permission, taking into account visual confirmation of spoofed user data and the logs captured by \framework{}.
 
 The heatmap depicted in Figure \ref{fig:intro_heatmap} provides an overview of the \framework{}'s performance when applied to the most popular apps on the Google Play Store. The dark green region of the heatmap signifies the successful deception of permissions for corresponding Android apps. The light green, orange, and red regions indicate permissions that were not requested, not utilized, and could not be deceived, respectively. 
@@ -78,7 +77,7 @@ Out of the 678 permissions requested by 70 apps, the \framework{} achieved a \te
     \label{fig:intro_heatmap}
 \end{figure}
 
-\subsubsection{Hooking Hidden APIs} Certain permissions such as sensors, involve method calls returning instances of \textit{Android Non-SDK Interfaces} classes also known as \textit{Hidden APIs} like \texttt{InputSensorInfo}. Accessing these Hidden APIs is restricted for \textit{JNI} and \textit{Java Reflections}. \framework{}'s hooks corresponding to Hidden APIs bypass these restrictions and instantiate classes with deceived data using the \textit{LSPlant}. Out of 78.32\% successfully deceived user data, 23.16\% were deceived by hooking hidden APIs.
-% 123/531
+\mysubsubsection{Hooking Hidden APIs} 
+Certain permissions such as sensors, involve method calls returning instances of \textit{Android Non-SDK Interfaces} classes also known as \textit{Hidden APIs} like \texttt{InputSensorInfo}. Accessing these Hidden APIs is restricted for \textit{JNI} and \textit{Java Reflections}. \framework{}'s hooks corresponding to Hidden APIs bypass these restrictions and instantiate classes with deceived data using the \textit{LSPlant}. Out of 78.32\% successfully deceived user data, 23.16\% were deceived by hooking hidden APIs.
 
-\subsubsection{Isolation} \framework{} requests the \textit{Query All Packages} permission to facilitate and simplify its privacy protection functionalities which is a non-runtime (normal) permission and the only permission requested by \framework{}. Notably, \framework{} operates offline, severing any external connections and isolating itself from the internet, establishing a secure and trustworthy environment.
+\mysubsubsection{Isolation} \framework{} requests the \textit{Query All Packages} permission to facilitate and simplify its privacy protection functionalities which is a non-runtime (normal) permission and the only permission requested by \framework{}. Notably, \framework{} operates offline, severing any external connections and isolating itself from the internet, establishing a secure and trustworthy environment.

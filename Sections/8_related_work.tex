@@ -1,65 +1,9 @@
+\newpage
 \section{Related Work}
 \label{sec:related_work}
 
-Several past works~\cite{bokhorst2017xprivacy, bokhorst2021xprivacylua, hornyack2011these, ratazzi2019pinpoint, raval2019permissions, shrestha2016slogger} block or filter the user data to protect user's privacy. However, by spoofing the data instead of outright blocking or filtering it, provides users with greater control over their data without crashing the app.
+Several past works~\cite{bokhorst2017xprivacy,bokhorst2021xprivacylua,hornyack2011these,ratazzi2019pinpoint,raval2019permissions,shrestha2016slogger} block or filter the user data to protect user's privacy. However, by spoofing the data instead of outright blocking or filtering it, provides users with greater control over their data without crashing the app.
 
-Many approaches~\cite{backes2015boxify, jeon2012dr, raval2016you, smalley2013security, wu2017context} modify the Android OS or third-party app source code to deceive user data fed into apps. However, source code modification is detectable in modern Android OS making the tactic ineffective. In contrast, \framework{} eliminates the need for any modifications to the Android OS or third-party app source code.
+Many approaches~\cite{backes2015boxify,jeon2012dr,raval2016you,smalley2013security,wu2017context} modify the Android OS or third-party app source code to deceive user data fed into apps. However, source code modification is detectable in modern Android OS making the tactic ineffective. In contrast, \framework{} eliminates the need for any modifications to the Android OS or third-party app source code.
 
-Other approaches focus on improving the Android Permission Framework by offering intent of permission usage by the third-party apps ~\cite{chitkara2017does, tsai2017turtle, conti2011crepe, thanigaivelan2018codra}, momentarily revoking app permissions based on user-defined policies~\cite{bugiel2013flexible, liu2016follow, chakraborty2014ipshield}, app activities~\cite{zhang2015leave, chen2013contextual, chen2017sweetdroid, petracca2015audroid}, or machine learning algorithms~\cite{olejnik2017smarper, rashidi2016android, wijesekera2017feasibility, fu2017inspired}. Revoking permissions from Android apps comes at the cost of app crashes or limited app functionalities. Incorporating context-based policies, and machine learning algorithms to analyze app behaviour by generated logs with spoofing user data to ensure a seamless user experience and enhanced user privacy in \framework{} is an important future work.
-
-% Current privacy protection methods based on context rely on revoking permissions and result in the loss of app functionalities, however incorporating context-based policies with spoofing user data instead of outright revocation would ensure a seamless user experience while maintaining a robust security mechanism.
-
-% Relying solely on user-defined policies and log-based manual inspection to protect private user information poses a time-consuming laborious work. However, incorporating machine learning algorithms to analyze \framework{}'s generated logs and app behaviour can significantly reduce user intervention and enhance privacy protection measures.
-
-% Various methodologies have been suggested to overcome the Android Permission Framework limitations, offering users a flexible structure to protect user data. Previous studies primarily focus on preventing apps from accessing user data by blocking, filtering, modifying source code or temporarily revoking permissions. Though this sometimes leads to negative consequences like app crashes or reduced functionality.
-
-% \input{tables/related_work_comparison}
-
-% \subsection{Modifying Source Code}
-% Modifying the Android OS or third-party app source code can be one of the tactics to overcome the inflexibility of Android's permission model. 
-% Android Security Framework~\cite{backes2014android} is a security-focused architecture to implement security modules at various levels and regulate user data flow to third-party apps. 
-% Boxify~\cite{backes2015boxify} executes third-party apps within sandbox processes and enforces user-defined policies by intercepting Android API calls for user data. 
-% MrHide~\cite{jeon2012dr} modifies the target apps' bytecode to call the former's methods while accessing user data instead of the actual methods. 
-% PrivateEye~\cite{raval2016you} modifies the Android Camera API to mask unmarked areas of the image or frame to prevent the disclosure of visual information in photos and videos. 
-% SEAndroid~\cite{smalley2013security} provides mutual exclusion to access permissions by permanently linking external accessories to itself. 
-% BinderFilter~\cite{wu2017context} is a context-aware IPC firewall allowing users to implement policies directly in the kernel to filter, modify and block IPC messages sent via Binder. 
-% SemaDroid~\cite{xu2015semadroid}, a context-based privacy-conscious sensor manager, enables users to monitor sensor utilisation and control sensor access by mocking data, adding noise, or reducing data accuracy, by hooking Android source code rather than the runtime system. 
-% However, attempts to modify the Android OS or alter third-party app source code can be easily detected using Android's Play Integrity API and app signatures, rendering this tactic ineffective in the latest Android versions. Moreover, modifying the source code of the Android OS necessitates users to install a new custom ROM on their devices, a complex process that proves challenging for inexperienced users. 
-% It can be seamlessly deployed on non-rooted Android devices without any source code alterations. Additionally, the utilization of LSPatch enables \framework{} to patch target apps without modifying their source code, ensuring immunity against detection.
-% Due to the dependency on other sandboxing apps, sensitive user data from legitimate apps might get exfiltrated. 
-
-% \subsection{Context-based Privacy Protection}
-% Many approaches focus on allowing permissions based on the code or environmental context determined by user-defined or automated policies instead of simply granting or denying it.
-% AuDroid~\cite{petracca2015audroid} uses exclusive access policies automatically over the phone's speaker and microphone to stop unsafe information flows from one app using the speaker to another app accessing the microphone. 
-% Integrating context-based policies to grant or deny permissions is a strategic approach. However, current methods that rely on revoking permissions based on context can result in the loss of app functionalities. To enhance both user experience and security, a more effective approach would be to combine context-based policies with spoofing user data instead of outright revocation. This would ensure a seamless user experience while maintaining a robust security mechanism.
-
-% \subsection{Revoking Permissions}
-% FlaskDroid~\cite{bugiel2013flexible}, Personalized Privacy Assistant~\cite{liu2016follow}, and App Guardian~\cite{zhang2015leave} controls access to sensitive resources by momentarily revoking permissions from the apps based on user-defined security-sensitive state of device, user policies and activities performed by target apps. 
-%Revoking permissions from Android apps comes at the cost of app crashes or limited app functionalities, instead \framework{} provides spoofed data to ensure app functionalities.
-
-% \subsection{Revoking Permissions using Machine Learning} 
-% Many techniques~\cite{olejnik2017smarper, rashidi2016android} automates the process of granting permissions using machine learning or other approaches. 
-% The ipShield Framework, developed by Chakraborty et al.~\cite{chakraborty2014ipshield}, keeps track of applications that access sensors and enables users to configure sensor data during the app's runtime based on context. It recommends the policies to adopt based on the user's rating regarding the security concerns for each app. 
-% SmarPer~\cite{olejnik2017smarper} automates the app permission request responses using machine learning techniques and minimizes the user's involvement in decision-making. 
-% RecDroid~\cite{rashidi2016android}, can make the correct permission-granting decisions for novice users. 
-% According to Wijesekera et al.~\cite{wijesekera2017feasibility}, certain application circumstances leave the Ask-On-First-Use permission model improvement insufficient and suggested a machine learning-based classification technique to predict users' choices based on their response per permission.
-% Pegasus~\cite{chen2013contextual} and SweetDroid~\cite{chen2017sweetdroid} record the code trails of user data queries made by third-party apps to take permission-granting decisions automatically. 
-% INSPIRED~\cite{fu2017inspired} is a UI-centered context-aware permission manager, it determines if permission request intent agrees with the app's UI element on the screen and accordingly allows permission to the app. 
-
-% \subsection{Prompting User about Permission Usage}
-% A few approaches~\cite{chitkara2017does, tsai2017turtle, conti2011crepe, thanigaivelan2018codra} propose to prompt the user about the user data usage and let the user decide whether to grant permission ahead or ignore it. 
-% ProtectMyPrivacy~\cite{chitkara2017does} enables Android users to determine the context of data access, i.e., whether the data is accessed by a third-party library or for a feature of the app. 
-% TurtleGuard~\cite{tsai2017turtle} provides a privacy-focused Android Feedback Interface. 
-% CRePe~\cite{conti2011crepe} and CoDRA~\cite{thanigaivelan2018codra} prompt users at runtime to assist with decisions for granting permissions and comprehending the intent of permission requests by identifying the app's policies for using permissions like WIFI access, location, and sensors. 
-% Informing users about app permissions offers valuable insights, but it falls short of addressing the profound issue of user privacy breaches. Although users can revoke permissions if they suspect malicious intent, this approach is not a comprehensive solution as it hampers app functionalities. In contrast, \framework{} empowers users by granting them full control over user data through its comprehensive logs on permission usage. With \framework{}, users can proactively safeguard their private data and maintain app functionalities without compromise.
-
-% \subsection{Blocking or Filtering Permission Data}
-% XPrivacy~\cite{bokhorst2017xprivacy} and its successor XPrivacyLua~\cite{bokhorst2021xprivacylua} give users power at the application layer by ceasing third-party apps from reading sensitive data, blocking APIs and turning off features to access private information. 
-% AppFence~\cite{hornyack2011these}, allows users to monitors and shadows the private data flowing from third-party apps on device to the internet. 
-% PINPOINT~\cite{ratazzi2019pinpoint} runs per-app sensor services depending on the user's decision, providing filtered or no information about the sensor data
-% to specific apps. 
-% DALF~\cite{raval2019permissions} enables users to manage the user data used by third-party apps via plugins.
-% Slogger~\cite{shrestha2016slogger} injects tailored random noise into sensor data.
-% Instead of simply blocking or filtering user data, which can limit app functionalities, \framework{} employs a more empowering approach—data deception. This approach strikes a balance between privacy protection and app usability.
-
-% In Android, apps are allowed to communicate with each other through various methods, such as ContentProvider, which \framework{} uses to communicate user policies and logs with hooked applications. However, this inter-process communication can be exploited by apps to collude and bypass restrictions imposed by the Android Permission Framework. This scenario, known as the Confused Deputy Problem, involves one app with permission communicating resource data to another app that does not possess the required permission. \framework{} does not currently handle this issue but can be extended to address it by hooking various methods involved in inter-process communication.
+Other approaches focus on improving the Android Permission Framework by offering intent of permission usage by the third-party apps ~\cite{chitkara2017does,tsai2017turtle,conti2011crepe,thanigaivelan2018codra}, momentarily revoking app permissions based on user-defined policies~\cite{bugiel2013flexible,liu2016follow,chakraborty2014ipshield}, app activities~\cite{zhang2015leave,chen2013contextual,chen2017sweetdroid,petracca2015audroid}, or machine learning algorithms~\cite{olejnik2017smarper,rashidi2016android,wijesekera2017feasibility,fu2017inspired}. Revoking permissions from Android apps comes at the cost of app crashes or limited app functionalities. Incorporating context-based policies, and machine learning algorithms to analyze app behaviour by generated logs with spoofing user data to ensure a seamless user experience and enhanced user privacy in \framework{} is an important future work.
