@@ -1,0 +1,52 @@
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.9765,0.9765,0.9765}
+\definecolor{identifierColor}{rgb}{0.1835, 0.7812, 0.8086}
+\definecolor{keywordColor}{rgb}{0.8594, 0.4023, 0.6641}
+\definecolor{stringColor}{rgb}{0.3555, 0.7422, 0.3789}
+\definecolor{emphColor}{rgb}{0.8984, 0.7539, 0.3242}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{black},
+    stringstyle=\color{stringColor},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\lstdefinelanguage{Kotlin}{
+  comment=[l]{//},
+  commentstyle={\color{gray}\ttfamily},
+  emph={filter, first, firstOrNull, forEach, lazy, map, mapNotNull, println, Class, Throwable, String},
+  emphstyle={\color{emphColor}},
+  identifierstyle=\color{black},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[s]{"""*}{*"""},
+  sensitive=true,
+  keywords={!in, !is, abstract, actual, annotation, as, as?, break, by, catch, class, companion, const, constructor, continue, crossinline, data, delegate, do, dynamic, else, enum, expect, external, false, field, file, final, finally, for, fun, get, if, import, in, infix, init, inline, inner, interface, internal, is, lateinit, noinline, null, object, open, operator, out, override, package, private, property, protected, public, receiveris, reified, return, return@, sealed, set, setparam, super, suspend, tailrec, this, throw, true, try, typealias, typeof, val, var, vararg, when, where, while,param},
+  keywordstyle={\color{keywordColor}\bfseries},
+  stringstyle={\color{stringColor}\ttfamily},
+  classoffset=1,
+  morekeywords={IXposedHookLoadPackage, XC_LoadPackage, ClipData, CREATOR, newPlainText, getString, getColumnIndex, context, Uri, parse, MethodHookParam, contentResolver, query}, % Library class names
+  keywordstyle=[1]\color{cyan},
+  classoffset=2,
+  morekeywords={@Deprecated, @JvmField, @JvmName, @JvmOverloads, @JvmStatic, @JvmSynthetic, @Throws, Array, Byte, Double, Float, Int, Integer, Iterable, Long, Runnable, Short, Any, Unit, Nothing},
+  keywordstyle={\color{gray}\bfseries},
+  classoffset=0
+}

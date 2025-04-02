@@ -1,0 +1,95 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.21 of 2022/01/12
+%
+\documentclass[runningheads]{llncs}
+%
+\usepackage[T1]{fontenc}
+% T1 fonts will be used to generate the final print and online PDFs,
+% so please use T1 fonts in your manuscript whenever possible.
+% Other font encondings may result in incorrect characters.
+%
+\usepackage{graphicx}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following two lines
+% to display URLs in blue roman font according to Springer's eBook style:
+%\usepackage{color}
+%\renewcommand\UrlFont{\color{blue}\rmfamily}
+%\urlstyle{rm}
+
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{subcaption}
+\usepackage{listings}
+
+\usepackage{xspace}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+% \usepackage[dvipsnames]{xcolor}
+\usepackage{subcaption}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{listings}
+\usepackage{multirow}
+
+\usepackage{float}
+
+\input{listing_style}
+\usepackage{lscape}
+\usepackage{tikz}
+\newcommand*\circled[1]{
+    \tikz[baseline=(char.base)]
+    {\node[shape=circle,draw,inner sep=1pt] (char) {#1};}
+}
+
+% \usepackage{titlesec}
+% \titlespacing{\subsection}{0pt}{5pt}{3pt} 
+
+\usepackage[compress]{cite}
+\setlength{\belowcaptionskip}{0pt}
+\captionsetup{skip=0pt}
+% \vspace{-10pt}
+% \usepackage[font=small,skip=-15pt]{caption}
+\setlength{\textfloatsep}{8pt} 
+
+\newcommand{\framework}{WhiteLie}
+\newcommand{\mysubsubsection}[1]{
+    \medskip
+    \noindent
+    \textit{\textbf{#1}}   
+}
+
+\newcommand{\mysubheading}[1]{
+    \noindent
+    \textit{\textbf{#1}}   
+}
+
+
+
+\usepackage{enumitem}
+\renewcommand{\labelitemi}{\textbullet}
+
+% \usepackage{xcolor}
+
+\begin{document}
+
+\input{Sections/0_heading.tex}
+\input{Sections/0a_abstract.tex}
+\input{Sections/1_introduction.tex}
+\input{Sections/2_motivation.tex}
+\input{Sections/3_methodology.tex}
+\input{Sections/4_architecture.tex}
+\input{Sections/5_protecting_user_privacy.tex}
+\input{Sections/6_mitigating_side_channel_attacks.tex}
+\input{Sections/7_results.tex}
+\input{Sections/8_related_work.tex}
+\input{Sections/9_conclusion.tex}
+
+% ---- Bibliography ----
+\bibliographystyle{splncs04}
+\bibliography{myreferences}
+%
+\end{document}
