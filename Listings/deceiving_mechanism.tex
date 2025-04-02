@@ -1,32 +1,32 @@
-\begin{lstlisting}[caption={Kotlin code to deceive Clipboard permission data with the data defined by user in \textit{Deceit} policies.},label={lst:clipboardDeceiver},language=Kotlin,float=*]
+\begin{landscape} 
+\begin{lstlisting}[caption={Kotlin code to deceive Clipboard data with the data defined by user in \textit{Deceit} policies.},label={lst:clipboardDeceiver},language=Kotlin,float=*]
 class SpoofingModule: IXposedHookLoadPackage {
-    companion object {
-        fun getClass(clsName: String): Class<*> = Class.forName(clsName, false, lpparam.classLoader)    
-    }
-    
-    @Throws(Throwable::class)
-    override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
-        hookAllMethods(getClass(ClipData.CREATOR.javaClass.name), "createFromParcel", XC_MethodHook() {
-            @Throws(Throwable::class)
-            override fun beforeHookedMethod(param: MethodHookParam) {
-                val uri = Uri.parse("content://com.xposedModule.provider/deceitSettings")
-                val cursor = context.contentResolver.query(uri, null, null, null, null) ?: return
-                val blockClipboard = cursor.getInt(cursor.getColumnIndex("blockClipboard")
-                cursor.close()
-                if(blockClipboard) param.result = null
-            }
+  @Throws(Throwable::class)
+  override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
+    ClipDataClassName = ClipData.CREATOR.javaClass.name
+    ClipDataClass = Class.forName(clsName, false, lpparam.classLoader)
+    hookAllMethods(ClipDataClass, "createFromParcel",  XC_MethodHook() {
+      @Throws(Throwable::class)
+      override fun beforeHookedMethod(param: MethodHookParam) {
+        val uri = Uri.parse("content://com.xposedModule.provider/deceitSettings")
+        val cursor = context.contentResolver.query(uri, null, null, null, null) ?: return
+        val blockClipboard = cursor.getInt(cursor.getColumnIndex("blockClipboard"))
+        cursor.close()
+        if(blockClipboard) param.result = null
+      }
 
-            @Throws(Throwable::class)
-            override fun afterHookedMethod(param: MethodHookParam) {
-                param.result ?: return
-                val uri = Uri.parse("content://com.xposedModule.provider/deceits")
-                val cursor = context.contentResolver.query(uri, null, null, null, null) ?: return
-                val clipboardLabel = cursor.getString(getColumnIndex("clipboardLabel")) ?: "dummyLabel"
-                val clipboardText = cursor.getString(getColumnIndex("clipboardText")) ?: "dummyText"  
-                cursor.close()
-                param.result = ClipData.newPlainText(clipboardLabel, clipboardText)
-            }       
-        })   
-    }
+      @Throws(Throwable::class)
+      override fun afterHookedMethod(param: MethodHookParam) {
+        param.result ?: return
+        val uri = Uri.parse("content://com.xposedModule.provider/deceits")
+        val cursor = context.contentResolver.query(uri, null, null, null, null) ?: return
+        val clipboardLabel = cursor.getString(getColumnIndex("clipboardLabel")) ?: "dummyLabel"
+        val clipboardText = cursor.getString(getColumnIndex("clipboardText")) ?: "dummyText"  
+        cursor.close()
+        param.result = ClipData.newPlainText(clipboardLabel, clipboardText)
+      }       
+    })   
+  }
 }
 \end{lstlisting}
+\end{landscape} 

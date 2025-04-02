@@ -1,51 +1,50 @@
 \section{Defending against Malware Attacks}
 \label{sec:mitigating_sca}
 
-In this section, we show that \framework offers a novel approach to mitigate the
-risk of leaking sensitive user data.
+In this section, we show that \framework{} offers a novel approach to mitigate the risk of leaking sensitive user data.
 
 \subsection{Testing \framework{} against Real-world Malicious Apps}
 \label{sec:malicious_apps}
 
-To assess \framework{}'s defense against real-world malicious apps, we selected 30 of the most downloaded apps recently banned from the Google Play Store. Since these apps were no longer available there, we obtained their latest versions from third-party platforms. We then analyzed their malicious behavior using sensitive API access logs recorded by \framework{}.
-
-Table \ref{tab:malicious_apps} summarizes the malicious behaviors identified in the 30 analyzed apps. We anticipate that users can detect similar threats using \framework{}. In the future, we aim to enhance \framework{} to proactively notify users of suspected malicious activities.
-
-\noindent Malicious behaviors fell under 4 major categories:
-
-\mysubheading{Upload sensitive data to the internet.} Some apps transmitted large amount of data in the background. For instance, \textit{PhoneFinder by Clapping} likely uploaded user audio data, as it had microphone access. Since revoking or spoofing this permission would break its functionality, \framework{} restricted its internet access to protect user privacy.
-
-\mysubheading{Accessing sensitive data unnecessarily.} Many malicious apps accessed irrelevant sensitive data. \textit{Amazing Video Editor} and \textit{Keyboard Themes} accessed contacts, while \textit{Instant Speech Translation} accessed photos. Denying these permissions caused app crashes, but \framework{} successfully spoofed the data without affecting functionality.
-
-\mysubheading{Accessing data without user knowledge.} Some apps accessed sensitive data unexpectedly. \textit{Free Translator Photo} attempted to access images without a translation request. \textit{Bus Driver Simulator} used accelerometer and gyroscope data while running in the background. \framework{} effectively spoofed sensitive data, allowing users to configure policies to restrict access only when the app is in the background. \textit{GeoSpot: GPS Tracker} tracked user locations even when not requested. \framework{} spoofed the location but required manual user intervention to differentiate between legitimate and unauthorized background tracking.
-
-\mysubheading{Sending SMS messages.} Apps like \textit{Private SMS} used \texttt{SMSManager.sendTex- tMessage()} without user consent. Such apps have been linked to financial fraud via premium SMS subscriptions. \framework{} blocked these messages, though this also affected app functionality. This highlights a limitation where spoofing cannot prevent malicious behavior if the app genuinely requires the data for its core features.
-
 \input{Tables/malicious_apps}
 
+To assess \framework{}'s defense against real-world malicious apps, we selected 30 of the most downloaded apps recently banned from the Google Play Store. Since these apps were no longer available there, we obtained their latest versions from third-party platforms. We then analyzed their malicious behavior using sensitive API access logs recorded by \framework{}.
+
+
+Table \ref{tab:malicious_apps} summarizes the malicious behaviors identified in the 30 analyzed apps. 
+We anticipate that users can detect similar threats using \framework{}. In the future, we aim to enhance \framework{} to proactively notify users of suspected malicious activities.
+
+
+% \noindent Malicious behaviors fell under 4 major categories:
+
+% \mysubheading{Upload sensitive data to the internet.} Some apps transmitted large amount of data in the background. For instance, \textit{PhoneFinder by Clapping} likely uploaded user audio data, as it had microphone access. Since revoking or spoofing this permission would break its functionality, \framework{} restricted its internet access to protect user privacy.
+
+% \mysubheading{Accessing sensitive data unnecessarily.} Many malicious apps accessed irrelevant sensitive data. \textit{Amazing Video Editor} and \textit{Keyboard Themes} accessed contacts, while \textit{Instant Speech Translation} accessed photos. Denying these permissions caused app crashes, but \framework{} successfully spoofed the data without affecting functionality.
+
+% \mysubheading{Accessing data without user knowledge.} Some apps accessed sensitive data unexpectedly. \textit{Free Translator Photo} attempted to access images without a translation request. \textit{Bus Driver Simulator} used accelerometer and gyroscope data while running in the background. \framework{} effectively spoofed sensitive data, allowing users to configure policies to restrict access only when the app is in the background. \textit{GeoSpot: GPS Tracker} tracked user locations even when not requested. \framework{} spoofed the location but required manual user intervention to differentiate between legitimate and unauthorized background tracking.
+
+% \mysubheading{Sending SMS messages.} Apps like \textit{Private SMS} used \texttt{SMSManager.sendTex- tMessage()} without user consent. Such apps have been linked to financial fraud via premium SMS subscriptions. \framework{} blocked these messages, though this also affected app functionality. This highlights a limitation where spoofing cannot prevent malicious behavior if the app genuinely requires the data for its core features.
 
 \subsection{Mitigating Side-Channel Attacks}
 \label{sec:side_channel_attack}
 Side-channel attacks exploit unintended information leaks, such as sensor readings, power consumption, or electromagnetic signals, to infer sensitive data. Mobile devices, with their numerous sensors and communication interfaces, are particularly vulnerable to such attacks, which can compromise passwords, cryptographic keys, or biometric data.
 
-Recent research~\cite{hasan2013sensing, simon2013pin, ba2020learning, shen2015input} has highlighted the risks posed by so-called \textit{Normal} Permissions—those that allow access to seemingly harmless data like accelerometer and gyroscope readings without requiring explicit user approval. However, attackers have leveraged these permissions to extract sensitive user information.
+Recent research~\cite{hasan2013sensing, simon2013pin, ba2020learning, shen2015input} has highlighted risks posed by so-called \textit{Normal} Permissions—those that allow access to seemingly harmless data like accelerometer and gyroscope readings without requiring explicit user approval. However, attackers have leveraged these permissions to extract sensitive user information.
 
 To address this privacy threat, \framework{} provides an innovative defense against side-channel attacks by selectively modifying the permissions granted to apps. By deceiving user data, \framework{} disrupts the ability of malicious apps to collect meaningful information through side channels.
 
 To demonstrate \framework{}'s effectiveness, we tested it against \textit{GyroSec}~\cite{lin2019motion}, an Android app that covertly records accelerometer and gyroscope data. \textit{GyroSec} then transmits this data to a remote server, where machine-learning algorithms predict touch inputs on the screen—posing a serious privacy risk. Our experiments confirmed that \textit{GyroSec} could execute this side-channel attack without any restrictions from the Android Permission Framework.
 
-By configuring \framework{} to deceive \textit{GyroSec}, we successfully logged every instance of data access and notified users of unauthorized background resource usage. Using the \textit{Policy Configurator}, we manipulated the accelerometer and gyroscope sensor readings to return constant values, effectively neutralizing the attack. Figure \ref{fig:tchPredict} illustrates the drastic reduction in \textit{GyroSec}'s prediction accuracy. The accuracy dropped from \textbf{81.22\%} to \textbf{5.36\%}, demonstrating \framework{}'s effectiveness in mitigating permission-based side-channel attacks.
-
-\begin{figure}[t]
+\begin{figure}
 \centering
-\begin{subfigure}{0.35\linewidth}
+\begin{subfigure}{0.30\linewidth}
     \includegraphics[width=\linewidth]{Figures/Side Channel Attacks/touch_prediction_samples_by_GyroSec_without_Deceiver.pdf}
     \caption{Without \framework{}}
     % \caption{Without \framework{} (High Accuracy achieved using true sensor readings)}
     \label{fig:tchPredict_wo_frmwrk}
 \end{subfigure}
-\hspace{0.9mm}
-\begin{subfigure}{0.35\linewidth}
+\hspace{10mm}
+\begin{subfigure}{0.30\linewidth}
     \includegraphics[width=\linewidth]{Figures/Side Channel Attacks/touch_prediction_samples_by_GyroSec_with_Deceiver.pdf}
     \caption{With \framework{}}
     \label{fig:tchPredict_w_frmwrk}
@@ -53,6 +52,8 @@ By configuring \framework{} to deceive \textit{GyroSec}, we successfully logged 
 \caption{Touch predicitions made by \textit{Gyrosec} server based on sensor readings received.}
 \label{fig:tchPredict}
 \end{figure}
+
+By configuring \framework{} to deceive \textit{GyroSec}, we successfully logged every instance of data access and notified users of unauthorized background resource usage. Using the \textit{Policy Configurator}, we manipulated the accelerometer and gyroscope sensor readings to return constant values, effectively neutralizing the attack. Figure \ref{fig:tchPredict} illustrates the drastic reduction in \textit{GyroSec}'s prediction accuracy. The accuracy dropped from \textbf{81.22\%} to \textbf{5.36\%}, demonstrating \framework{}'s effectiveness in mitigating permission-based side-channel attacks.
 
 \textit{Overall, this section shows that \framework could effectively stop most 
 malicious behaviors giving better control to users over their sensitive data.}
